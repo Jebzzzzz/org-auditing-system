@@ -1,26 +1,218 @@
 @import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-border-subtle: var(--border-subtle);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-success-muted: var(--success-muted);
+  --color-success-muted-foreground: var(--success-muted-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-warning-muted: var(--warning-muted);
+  --color-warning-muted-foreground: var(--warning-muted-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive-muted: var(--destructive-muted);
+  --color-destructive-muted-foreground: var(--destructive-muted-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-info-muted: var(--info-muted);
+  --color-info-muted-foreground: var(--info-muted-foreground);
+  --color-bank: var(--bank);
+  --color-bank-muted: var(--bank-muted);
+  --color-bank-muted-foreground: var(--bank-muted-foreground);
+  --color-cash: var(--cash);
+  --color-cash-muted: var(--cash-muted);
+  --color-cash-muted-foreground: var(--cash-muted-foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --background: #F8FAFC;
+  --foreground: #0F172A;
+  --card: #FFFFFF;
+  --primary: #0A2540;
+  --primary-foreground: #FFFFFF;
+  --secondary: #4F46E5;
+  --secondary-foreground: #FFFFFF;
+  --accent: #E2E8F0;
+  --accent-foreground: #1E293B;
+  --muted: #F1F5F9;
+  --muted-foreground: #475569;
+  --border: #64748B;
+  --border-subtle: #E2E8F0;
+  --input: #64748B;
+  --ring: #4F46E5;
+
+  --success: #047857;
+  --success-foreground: #FFFFFF;
+  --success-muted: #ECFDF5;
+  --success-muted-foreground: #065F46;
+  --warning: #B45309;
+  --warning-foreground: #FFFFFF;
+  --warning-muted: #FEF3C7;
+  --warning-muted-foreground: #92400E;
+  --destructive: #DC2626;
+  --destructive-foreground: #FFFFFF;
+  --destructive-muted: #FEF2F2;
+  --destructive-muted-foreground: #991B1B;
+  --info: #0369A1;
+  --info-foreground: #FFFFFF;
+  --info-muted: #E0F2FE;
+  --info-muted-foreground: #075985;
+
+  --bank: #075985;
+  --bank-muted: #E0F2FE;
+  --bank-muted-foreground: #075985;
+  --cash: #6D28D9;
+  --cash-muted: #F3E8FF;
+  --cash-muted-foreground: #5B21B6;
+
+  --font-inter: "Inter", system-ui, sans-serif;
+  --font-ibm-plex-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-ibm-plex-mono), ui-monospace, monospace;
+
+  --radius: 0.5rem;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+
+  --shadow-soft: 0 1px 3px 0 rgb(10 37 64 / 8%), 0 1px 2px -1px rgb(10 37 64 / 4%);
+  --shadow-float: 0 10px 25px -5px rgb(10 37 64 / 12%), 0 8px 10px -6px rgb(10 37 64 / 8%);
+  --shadow-modal: 0 25px 50px -12px rgb(10 37 64 / 25%);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply font-sans;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .font-tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .font-zero {
+    font-variant-numeric: slashed-zero;
+  }
+
+  .fin-card {
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    background: var(--card);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .fin-table-header {
+    background: var(--muted);
+    border-bottom: 1px solid var(--border);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .fin-grid-cell {
+    border-right: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .animate-fade-in {
+    animation: fade-in 160ms ease-out;
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 200ms ease-out;
+  }
+
+  .animate-value-flash {
+    animation: value-flash 350ms ease-in-out;
+  }
+
+  .animate-row-highlight {
+    animation: row-highlight 700ms ease-out;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes value-flash {
+  0% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  30% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes row-highlight {
+  0% {
+    background-color: rgba(79, 70, 229, 0.08);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in,
+  .animate-fade-in-up,
+  .animate-value-flash,
+  .animate-row-highlight {
+    animation: none;
+  }
 }
